@@ -1,0 +1,13 @@
+<div>
+  <button (click)="openDialog()" class="header-button btn btn-primary m-1 flex-fill" style="min-width: 100px;">Restart Service</button>
+</div>
+
+<div *ngIf="showDialog" id="overlay"></div>
+<div *ngIf="showDialog" id="popup">
+  <h3>Restart Service</h3>
+
+  <label for="serviceName">Service Name:</label>
+  <input type="text" [(ngModel)]="serviceName" /><br />
+  <button (click)="submitRequest()">Submit</button>
+  <button (click)="closeDialog()">Cancel</button>
+</div>

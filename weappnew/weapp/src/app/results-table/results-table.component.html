@@ -1,0 +1,63 @@
+<p>Results Table Works!</p>
+<p>Function Name: {{ dataservice.functionname }}</p>
+
+<div class="results-table-container">
+  <table class="table table-bordered table-hover">
+    <thead class="thead-light">
+      <tr>
+        <th>Server Name</th>
+        <th *ngFor="let column of columnNames">{{ column }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Apply the ngIf condition directly within the ngFor loop -->
+      <tr *ngFor="let item of ResultsMap | keyvalue" [ngClass]="{'d-none': item.key === 'serverName'}">
+        <td>{{ item.key }}</td>
+        <td *ngFor="let column of columnNames"
+            (mouseover)="onHover(item.key, column)"
+            (mouseleave)="onLeave()">
+          <ng-container *ngIf="typeof item.value[column] === 'object'; else plainText">
+            <div *ngFor="let entry of item.value[column] | keyvalue" [ngClass]="{'d-none': entry.key === 'serverName'}">
+              <strong>{{ entry.key }}:</strong> {{ entry.value }}
+            </div>
+          </ng-container>
+          <ng-template #plainText>
+            {{ item.value[column] !== undefined ? item.value[column] : 'N/A' }}
+          </ng-template>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Hovered data table -->
+  <div class="hover-data-table" *ngIf="hoverData.length > 0">
+    <h3>Details for {{ hoveredServer }} - {{ hoverColumn }} Hover</h3>
+    <table class="table table-bordered table-sm">
+      <thead>
+        <tr>
+          <ng-container *ngFor="let keyValue of hoverData[0] | keyvalue">
+            <th *ngIf="keyValue.key !== 'systemInfo' && keyValue.key !== 'serverName' && keyValue.key !== (hoverColumn !== 'memoryUsagePercentage' ? 'memoryUsageMB' : 'cpuUsagePercentage') && keyValue.key !== 'date'">
+              {{ keyValue.key }}
+            </th>
+          </ng-container>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of hoverData">
+          <ng-container *ngFor="let keyValue of data | keyvalue">
+            <td *ngIf="keyValue.key !== 'systemInfo' && keyValue.key !== 'serverName' && keyValue.key !== (hoverColumn !== 'memoryUsagePercentage' ? 'memoryUsageMB' : 'cpuUsagePercentage') && keyValue.key !== 'date'">
+              <ng-container *ngIf="typeof keyValue.value === 'object'; else simpleValue">
+                <div *ngFor="let entry of keyValue.value | keyvalue">
+                  <strong>{{ entry.key }}:</strong> {{ entry.value }}
+                </div>
+              </ng-container>
+              <ng-template #simpleValue>
+                {{ keyValue.value }}
+              </ng-template>
+            </td>
+          </ng-container>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

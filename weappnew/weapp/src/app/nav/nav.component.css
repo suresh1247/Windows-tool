@@ -1,0 +1,28 @@
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #343a40; /* Consistent with thead-dark */
+    height: 70px;
+    border-bottom: 2px solid #007bff; /* Accent color */
+  }
+  
+  .navbar-brand {
+    color: #fff;
+    font-size: 30px;
+    text-align: center; /* Center the text */
+    font-weight: bold;
+  }
+  
+  .navbar-dark .navbar-brand:hover {
+    color: #f4f4f9; /* Slightly lighter on hover */
+    text-decoration: none;
+  }
+  
+  /* Responsive Styles for Navbar */
+  @media (max-width: 768px) {
+    .navbar-brand {
+      font-size: 24px;
+    }
+  }
