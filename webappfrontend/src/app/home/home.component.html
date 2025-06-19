@@ -32,7 +32,7 @@
 @if(this.servicename.ListServers.size != 0) {
   <section class="container mt-4">
     <div class="d-flex flex-wrap justify-content-start">
-      <button class="header-button btn btn-primary m-1" style="min-width: 100px;" (click)="logFunctionName('Server/Server Ping')">Server Ping</button>
+      <button class="header-button btn btn-primary m-1" style="min-width: 100px;" (click)="logFunctionName('Server/Ping')">Server Ping</button>
       <button class="header-button btn btn-primary m-1" style="min-width: 100px;" (click)="logFunctionName('Server/healthCheck')">Server Health Check</button>
       <button class="header-button btn btn-primary m-1" style="min-width: 100px;" (click)="logFunctionName('Server/cpu-memory-info')">CPU and Memory</button>
       <button class="header-button btn btn-primary m-1" style="min-width: 100px;" (click)="logFunctionName('Server/DiskInfo')">Disk Info</button>
@@ -41,10 +41,10 @@
       <button class="header-button btn btn-primary m-1" style="min-width: 100px;" (click)="logFunctionName('Server/connectiontest')">Connection Test</button>
       <button class="header-button btn btn-primary m-1" style="min-width: 100px;" (click)="logFunctionName('api/patching/last5')">5Patch</button>
       <app-patch class="m-1" style="min-width: 100px;"></app-patch>
-      <button class="header-button btn btn-primary m-1" style="min-width: 100px;" (click)="logFunctionName('Server/ServerReboot')">Server Reboot</button>
+      <button class="header-button btn btn-primary m-1" style="min-width: 100px;" (click)="logFunctionName('Server/Reboot')">Server Reboot</button>
       <button class="header-button btn btn-primary m-1" style="min-width: 100px;" (click)="logFunctionName('Server/diskcleanup')">Disk Clean Up</button>
       <app-service-restart class="m-1" style="min-width: 100px;"></app-service-restart>
-      <div class="header-button btn btn-primary m-1" style="min-width: 100px;">Service Comparison</div>
+      <button class="header-button btn btn-primary m-1" style="min-width: 100px;" (click)="logFunctionName('server/compare-services')">compare-services</button>
     </div>
   </section>
 }

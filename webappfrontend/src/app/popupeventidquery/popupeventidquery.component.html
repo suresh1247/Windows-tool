@@ -1,0 +1,56 @@
+<div>
+  <button (click)="openDialog()" class="header-button btn btn-primary m-1 flex-fill" style="min-width: 100px;">
+    EventIDQuery
+  </button>
+  <span>{{ resultMessage }}</span>
+</div>
+
+<div *ngIf="showDialog" id="overlay"></div>
+<div *ngIf="showDialog" id="popup">
+  <h3>Event ID Query</h3>
+
+  <label for="logName">Event Log:</label>
+  <select id="logName" [(ngModel)]="LogName">
+    <option value="System">System</option>
+    <option value="Security">Security</option>
+    <option value="Application">Application</option>
+    <option value="Setup">Setup</option>
+  </select>
+  <br />
+
+  <label for="eventType">Event Type:</label>
+  <select id="eventType" [(ngModel)]="EventType">
+    <option value="">Any</option>
+    <option value="Error">Error</option>
+    <option value="Warning">Warning</option>
+    <option value="Information">Information</option>
+    <option value="Critical">Critical</option>
+    <option value="Verbose">Verbose</option>
+    <option value="Audit Success">Audit Success</option>
+    <option value="Audit Failure">Audit Failure</option>
+  </select>
+  <br />
+
+  <label for="eventIDs">Event ID's (Optional):</label>
+  <input id="eventIDs" type="text" [(ngModel)]="EventIDs" placeholder="e.g. 1000,1001" />
+  <br />
+
+  <label for="startDate">Start Date:</label>
+  <input id="startDate" type="date" [(ngModel)]="StartDate" [disabled]="useCurrentDate" />
+  <br />
+
+  <label for="endDate">End Date:</label>
+  <input id="endDate" type="date" [(ngModel)]="EndDate" [disabled]="useCurrentDate" />
+  <br />
+
+  <label for="useCurrentDate">Use Current Date:</label>
+  <input id="useCurrentDate" type="checkbox" [(ngModel)]="useCurrentDate" (change)="updateDates()" />
+  <br />
+
+  <label for="eventSource">Event Source (Optional):</label>
+  <input id="eventSource" type="text" [(ngModel)]="EventSource" placeholder="e.g. EventLog" />
+  <br />
+
+  <button (click)="submitRequest()" class="btn btn-success m-1">Submit</button>
+  <button (click)="closeDialog()" class="btn btn-secondary m-1">Cancel</button>
+</div>

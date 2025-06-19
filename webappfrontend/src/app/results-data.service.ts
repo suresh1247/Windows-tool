@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class ResultsDataService {
   public functionname:string="";
-  public ListServers=new Set<string>;;
+  public ListServers=new Set<string>;
   public name="";
+  public AllServers=new Set<string>;
 }

@@ -31,7 +31,10 @@ servers = "";
 
   }
   ngOnInit(){
+    this.servicename.name="";
+    this.servicename.functionname="";
     this.servicename.ListServers.clear();
+    this.AddedServers=this.servicename.AllServers;
   }
   public servicename=inject(ResultsDataService);
   onAddServers() {

@@ -15,7 +15,7 @@ export class HttpsService {
 
   Onserver(server: string, url_part: string) {
     const url = 'http://localhost:5168/' + url_part;
-    alert(url)
+    // alert(url)
     var data=null;
     if(this.dataservice.name!="" && !this.dataservice.name.startsWith("kbn")){
       data = { ComputerName: server, ServiceName: this.dataservice.name
@@ -23,18 +23,21 @@ export class HttpsService {
     }
     if(this.dataservice.name.startsWith("EventId")){
       data=JSON.parse(this.dataservice.name.substring(7));
+      data.ComputerName=server;
+    
     }
     if(this.dataservice.name.startsWith("kbn")){
       data = { server: server, kbNumber: this.dataservice.name.substring(3)
        };
     }
-    console.log(data);
+    console.log("data",data);
+    // alert(JSON.stringify(data));
 
     return this.http.post<any>(url, JSON.stringify(data!=null?data: server), {
       headers: { 'Content-Type': 'application/json' }
     }).pipe(
       catchError(error => {
-        alert("error");
+        // alert("error");
         console.error('Error pinging server:', error);
         return of({ Status: 'Error' });
       })

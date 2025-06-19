@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { HttpsService } from '../https.service';
 import { ResultsDataService } from '../results-data.service';
 import { CommonModule } from '@angular/common';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-results-table',
@@ -11,6 +12,10 @@ import { CommonModule } from '@angular/common';
   styleUrl: './results-table.component.css'
 })
 export class ResultsTableComponent implements OnInit {
+home() {
+  alert("HOme")
+this.router.navigate(['']);
+}
   public ResultsMap = new Map<string, any>();
 
   public HoverColumnNames: Set<string> = new Set();
@@ -19,14 +24,14 @@ export class ResultsTableComponent implements OnInit {
   public hoverColumn: string | null = null;
   public hoverData: any[] = [];
 
-  constructor(private httpservice: HttpsService,public dataservice:ResultsDataService) { }
+  constructor(private httpservice: HttpsService,public dataservice:ResultsDataService,public router:Router) { }
 
   ngOnInit() {
     this.dataservice.ListServers.forEach(element => {
       
       this.ResultsMap.set(element, "Loading");
       this.httpservice.Onserver(element, this.dataservice.functionname).subscribe(response => {
-  alert("response "+JSON.stringify(response));
+  // alert("response "+JSON.stringify(response));
   this.ResultsMap.set(element, response);
   Object.keys(response).forEach(key => {
     if (key.endsWith("Hover")) {
@@ -37,7 +42,7 @@ export class ResultsTableComponent implements OnInit {
   });
 });
     });
-    alert(JSON.stringify(this.dataservice));
+    // alert(JSON.stringify(this.dataservice));
   }
   objectstring(obj:any){
     return JSON.stringify(obj);

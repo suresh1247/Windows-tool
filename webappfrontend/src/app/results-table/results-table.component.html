@@ -22,7 +22,7 @@
             </div>
           </ng-container>
           <ng-template #plainText>
-            {{ item.value[column] !== undefined ? item.value[column] : 'N/A' }}
+            {{ item.value[column] !== undefined ? objectstring(item.value[column]) : 'N/A' }}
           </ng-template>
         </td>
       </tr>
@@ -61,3 +61,5 @@
     </table>
   </div>
 </div>
+<p>{{objectstring(ResultsMap)}}</p>
+<button (click)="home()">Go to home-page</button>
