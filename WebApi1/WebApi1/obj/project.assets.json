@@ -3854,11 +3854,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pallavi\\Downloads\\WebApi1\\WebApi1\\WebApi.csproj",
+      "projectUniqueName": "C:\\Users\\pallavi\\Downloads\\ServerTool\\WebApi1\\WebApi1\\WebApi.csproj",
       "projectName": "WebApi",
-      "projectPath": "C:\\Users\\pallavi\\Downloads\\WebApi1\\WebApi1\\WebApi.csproj",
+      "projectPath": "C:\\Users\\pallavi\\Downloads\\ServerTool\\WebApi1\\WebApi1\\WebApi.csproj",
       "packagesPath": "C:\\Users\\pallavi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pallavi\\Downloads\\WebApi1\\WebApi1\\obj\\",
+      "outputPath": "C:\\Users\\pallavi\\Downloads\\ServerTool\\WebApi1\\WebApi1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\pallavi\\AppData\\Roaming\\NuGet\\NuGet.Config"
